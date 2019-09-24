@@ -1,10 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './app.css';
+import ShippingLabelMaker from './features/shipping-label-maker/shippingLabelMaker';
 
 function App() {
   return (
-	  <h1>Hello</h1>
+	  <ShippingLabelMaker />
 	);
 }
 // function App() {

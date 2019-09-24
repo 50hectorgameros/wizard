@@ -39,7 +39,7 @@ function Wizard ( props ) {
 	const Step = steps[ step ];
 	return (
 		<>
-			{ header }
+			{ /* header */ }
 			<Step onAction={ onAction }/>
 		</>
 	);
