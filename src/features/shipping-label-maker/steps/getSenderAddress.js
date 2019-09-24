@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function GetSenderAddress () {
+function GetSenderAddress ( props ) {
+	const {
+		onAction,
+		wizardContext
+	} = props;
 	return (
 		<form>
 			<label>Name:&nbsp;</label>
@@ -20,7 +24,7 @@ function GetSenderAddress () {
 			<input
 				type='button'
 				value='Next'
-				onClick
+				onClick={ onAction }
 			/>
 		</form>
 	);

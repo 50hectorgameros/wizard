@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 function Wizard ( props ) {
 	const {
 		steps,
-		wizardContext
+		wizardContext,
+		onComplete
 	} = props;
 	const lastStep = steps.length - 1;
 	const [ step, setStep ] = useState( 0 );
@@ -28,8 +29,7 @@ function Wizard ( props ) {
 				}
 				break;
 			case 3:
-				newStep = lastStep;
-				break;
+				return onComplete();
 			default:
 			 throw new Error( `Invalid option: ${ action }` );
 		}
@@ -40,7 +40,10 @@ function Wizard ( props ) {
 	return (
 		<>
 			{ /* header */ }
-			<Step onAction={ onAction }/>
+			<Step
+				onAction={ onAction }
+				wizardContext={ wizardContext }
+			/>
 		</>
 	);
 }
