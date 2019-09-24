@@ -5,7 +5,8 @@ function Wizard ( props ) {
 	const {
 		steps,
 		wizardContext,
-		onComplete
+		onComplete,
+		header: Header
 	} = props;
 	const lastStep = steps.length - 1;
 	const [ step, setStep ] = useState( 0 );
@@ -39,7 +40,7 @@ function Wizard ( props ) {
 	const Step = steps[ step ];
 	return (
 		<>
-			{ /* header */ }
+			<Header title="Shipping Label Maker" />
 			<Step
 				onAction={ onAction }
 				wizardContext={ wizardContext }

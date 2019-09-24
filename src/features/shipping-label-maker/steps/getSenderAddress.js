@@ -26,11 +26,11 @@ function GetSenderAddress ( props ) {
 				onChange={ onChange }
 			/>
 			<br />
-			<label>Address:&nbsp;</label>
+			<label>Street:&nbsp;</label>
 			<input
 				type='text'
-				name='address'
-				value={ localFrom.address }
+				name='street'
+				value={ localFrom.street }
 				onChange={ onChange }
 			/>
 			<br />

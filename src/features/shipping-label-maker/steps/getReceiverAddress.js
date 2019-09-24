@@ -29,11 +29,11 @@ function GetReceiverAddress ( props ) {
 				onChange={ onChange }
 			/>
 			<br />
-			<label>Address:&nbsp;</label>
+			<label>Street:&nbsp;</label>
 			<input
 				type='text'
-				name='address'
-				value={ localTo.address }
+				name='street'
+				value={ localTo.street }
 				onChange={ onChange }
 			/>
 			<br />
