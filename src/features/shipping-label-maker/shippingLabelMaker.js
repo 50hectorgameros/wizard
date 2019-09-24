@@ -27,7 +27,9 @@ let ShippingInfo = {
 };
 
 function ShippingLabelMaker () {
-	function onComplete () {}
+	function onComplete () {
+		console.log( 'Done' );
+	}
 	return (
 		<Wizard
 			steps={ [

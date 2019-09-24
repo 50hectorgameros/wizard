@@ -21,10 +21,11 @@ function GetSenderAddress ( props ) {
 	};
 	return (
 		<form>
-			<label>Weight</label>
+			<label>Weight:&nbsp;</label>
 			<input
 				type='number'
 				name='weight'
+				min='0'
 				value={ localWeight }
 				onChange={ onChange }
 			/>

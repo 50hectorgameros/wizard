@@ -12,6 +12,8 @@ function Confirm ( props ) {
 	const onClickEnd = () => {
 		onAction( 3 );
 	};
+	const shippingValue =
+		+shippingOption === 1 ? 'Ground' : +shippingOption === 2 ? 'Priority' : '';
 	return (
 		<>
 			<h2>Sender Information</h2>
@@ -27,7 +29,7 @@ function Confirm ( props ) {
 			<p>State: { to.state }</p>
 			<p>zip code: { to.zip }</p>
 			<h3>weight: { weight }</h3>
-			<h3>Shipping Option: { +shippingOption === 1 ? 'Ground' : 'Priority' }</h3>
+			<h3>Shipping Option: { shippingValue }</h3>
 			<form>
 				<input
 					type='button'
