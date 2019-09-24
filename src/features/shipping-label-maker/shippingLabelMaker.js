@@ -4,7 +4,10 @@ import GetSenderAddress from './steps/getSenderAddress';
 import GetReceiverAddress from './steps/getReceiverAddress';
 import Header from './header';
 
-let ShippingInfo = {};
+let ShippingInfo = {
+	from: {},
+	to: {}
+};
 
 function ShippingLabelMaker () {
 	function onComplete () {}
