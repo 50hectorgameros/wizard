@@ -6,6 +6,9 @@ function GetSenderAddress ( props ) {
 		onAction,
 		wizardContext
 	} = props;
+	const onClick = () => {
+		onAction( 2 );
+	}
 	return (
 		<form>
 			<label>Name:&nbsp;</label>
@@ -24,7 +27,7 @@ function GetSenderAddress ( props ) {
 			<input
 				type='button'
 				value='Next'
-				onClick={ onAction }
+				onClick={ onClick }
 			/>
 		</form>
 	);
