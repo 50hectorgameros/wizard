@@ -52,8 +52,15 @@ function ShippingLabelMaker () {
 		};
 
 		setLabelDone( false );
+		setNewLabel( false );
 	}
+	function createNewShippingLabel () {
+		setNewLabel( true );
+	}
+
 	const [ labelDone, setLabelDone ] = useState( false );
+	const [ newLabel, setNewLabel ] = useState( false );
+
 	if ( labelDone ) {
 		return (
 			<ShippingLabel
@@ -63,18 +70,26 @@ function ShippingLabelMaker () {
 		);
 	}
 	return (
-		<Wizard
-			steps={ [
-				GetSenderAddress,
-				GetReceiverAddress,
-				GetWeight,
-				GetShippingOption,
-				Confirm
-			] }
-			wizardContext={ ShippingInfo }
-			onComplete={ onComplete }
-			header={ Header }
-		/>
+		<>
+			{ !newLabel ?
+				<button
+					onClick={ createNewShippingLabel }
+				>
+					Create Shipping Label
+				</button> :
+				<Wizard
+					steps={ [
+						GetSenderAddress,
+						GetReceiverAddress,
+						GetWeight,
+						GetShippingOption,
+						Confirm
+					] }
+					wizardContext={ ShippingInfo }
+					onComplete={ onComplete }
+					header={ Header }
+				/> }
+		</>
 	);
 }
 

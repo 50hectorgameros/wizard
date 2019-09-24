@@ -26,7 +26,7 @@ export default props => {
 			<form>
 				<input
 					type='button'
-					value='End'
+					value='Done'
 					onClick={ onComplete }
 				/>
 			</form>
