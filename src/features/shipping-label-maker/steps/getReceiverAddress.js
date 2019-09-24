@@ -6,10 +6,10 @@ function GetReceiverAddress ( props ) {
 		onAction,
 		wizardContext: { to }
 	} = props;
-	const onClickLeft = () => {
+	const onClickPrevious = () => {
 		onAction( 1 );
 	};
-	const onClickRight = () => {
+	const onClickNext = () => {
 		onAction( 2 );
 	};
 	const [ localTo, setLocalTo ] = useState( to );
@@ -61,13 +61,13 @@ function GetReceiverAddress ( props ) {
 			<br />
 			<input
 				type='button'
-				value='Back'
-				onClick={ onClickLeft }
+				value='Previous'
+				onClick={ onClickPrevious }
 			/>
 			<input
 				type='button'
 				value='Next'
-				onClick={ onClickRight }
+				onClick={ onClickNext }
 			/>
 		</form>
 	);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function GetSenderAddress ( props ) {
+function GetShippingOption ( props ) {
 	const {
 		onAction,
 		wizardContext
@@ -12,22 +12,28 @@ function GetSenderAddress ( props ) {
 	const onClickNext = () => {
 		onAction( 2 );
 	};
-	const [ localWeight, setLocalWeight ] = useState( wizardContext.weight );
+	const [
+		localShippingOption,
+		setLocalShippingOption
+	] = useState( wizardContext.shippingOption );
 	const onChange = event => {
 		const { target: { name, value } } = event;
 		wizardContext[ name ] = value;
 
-		setLocalWeight( value );
+		setLocalShippingOption( value );
 	};
 	return (
 		<form>
-			<label>Weight</label>
-			<input
-				type='number'
-				name='weight'
-				value={ localWeight }
+			<label>Shipping Option:&nbsp;</label>
+			<select
+				name='shippingOption'
+				value={ localShippingOption }
 				onChange={ onChange }
-			/>
+			>
+				<option></option>
+				<option value="1">Ground</option>
+				<option value="2">Priority</option>
+			</select>
 			<br />
 			<input
 				type='button'
@@ -43,9 +49,9 @@ function GetSenderAddress ( props ) {
 	);
 }
 
-GetSenderAddress.propTypes = {
+GetShippingOption.propTypes = {
 	wizardContext: PropTypes.object.isRequired,
 	onAction: PropTypes.func.isRequired
 };
 
-export default GetSenderAddress;
+export default GetShippingOption;

@@ -3,6 +3,8 @@ import Wizard from '../../core/components/wizard'
 import GetSenderAddress from './steps/getSenderAddress';
 import GetReceiverAddress from './steps/getReceiverAddress';
 import GetWeight from './steps/getWeight';
+import Confirm from './steps/confirm';
+import GetShippingOption from './steps/getShippingOption';
 import Header from './header';
 
 let ShippingInfo = {
@@ -28,7 +30,13 @@ function ShippingLabelMaker () {
 	function onComplete () {}
 	return (
 		<Wizard
-			steps={ [ GetSenderAddress, GetReceiverAddress, GetWeight ] }
+			steps={ [
+				GetSenderAddress,
+				GetReceiverAddress,
+				GetWeight,
+				GetShippingOption,
+				Confirm
+			] }
 			wizardContext={ ShippingInfo }
 			onComplete={ onComplete }
 			header={ Header }
