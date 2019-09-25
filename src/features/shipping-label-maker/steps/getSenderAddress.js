@@ -1,22 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
-const useStyles = makeStyles( theme => ( {
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap'
-	},
-	textField: {
-		marginLeft: theme.spacing( 1 ),
-		marginRight: theme.spacing( 1 )
-	},
-	button: {
-		margin: theme.spacing( 1 )
-	}
-} ) );
+import { useStyles } from './step-style';
 
 function GetSenderAddress ( props ) {
 	const classes = useStyles();
@@ -90,14 +76,16 @@ function GetSenderAddress ( props ) {
 					name='zip'
 				/>
 			</form>
-			<Button
-				variant='outlined'
-				color='secondary'
-				className={ classes.button }
-				onClick={ onClick }
-			>
-				Next
-			</Button>
+			<div className={ classes.buttonGroup }>
+				<Button
+					variant='outlined'
+					color='secondary'
+					className={ classes.button }
+					onClick={ onClick }
+				>
+					Next
+				</Button>
+			</div>
 		</>
 	);
 }

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useStyles } from './step-style';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function GetReceiverAddress ( props ) {
 	const {
@@ -19,57 +22,82 @@ function GetReceiverAddress ( props ) {
 
 		setLocalTo( { ...to } );
 	};
+	const classes = useStyles();
 	return (
-		<form>
-			<label>Name:&nbsp;</label>
-			<input
-				type='text'
-				name='name'
-				value={ localTo.name }
-				onChange={ onChange }
-			/>
-			<br />
-			<label>Street:&nbsp;</label>
-			<input
-				type='text'
-				name='street'
-				value={ localTo.street }
-				onChange={ onChange }
-			/>
-			<br />
-			<label>City:&nbsp;</label>
-			<input
-				type='text'
-				name='city'
-				value={ localTo.city }
-				onChange={ onChange }
-			/>
-			<label>State:&nbsp;</label>
-			<input
-				type='text'
-				name='state'
-				value={ localTo.state }
-				onChange={ onChange }
-			/>
-			<label>Zip:&nbsp;</label>
-			<input
-				type='text'
-				name='zip'
-				value={ localTo.zip }
-				onChange={ onChange }
-			/>
-			<br />
-			<input
-				type='button'
-				value='Previous'
-				onClick={ onClickPrevious }
-			/>
-			<input
-				type='button'
-				value='Next'
-				onClick={ onClickNext }
-			/>
-		</form>
+		<>
+			<form className={ classes.container }>
+				<TextField
+					id='receiver-name'
+					label='Name'
+					value={ localTo.name }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					fullWidth
+					name='name'
+				/>
+				<TextField
+					id='receiver-street'
+					label='Street'
+					value={ localTo.street }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					fullWidth
+					name='street'
+				/>
+				<TextField
+					id='receiver-city'
+					label='City'
+					value={ localTo.city }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					name='city'
+				/>
+				<TextField
+					id='receiver-state'
+					label='State'
+					value={ localTo.state }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					name='state'
+				/>
+				<TextField
+					id='receiver-zip'
+					label='Zip'
+					value={ localTo.zip }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					name='zip'
+				/>
+			</form>
+			<div className={ classes.buttonGroup }>
+				<Button
+					variant='outlined'
+					color='secondary'
+					className={ classes.button }
+					onClick={ onClickPrevious }
+				>
+					Previous
+				</Button>
+				<Button
+					variant='outlined'
+					color='secondary'
+					className={ classes.button }
+					onClick={ onClickNext }
+				>
+					Next
+				</Button>
+			</div>
+		</>
 	);
 }
 
