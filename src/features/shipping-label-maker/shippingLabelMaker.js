@@ -8,6 +8,11 @@ import GetShippingOption from './steps/getShippingOption';
 import Header from './header';
 import ShippingLabel from './shippingLabel'
 
+const shippingRate = 0.4;
+const ShippingOption = {
+	ground: 1,
+	priority: 2
+};
 let ShippingInfo = {
 	from: {
 		name: '',
@@ -56,6 +61,14 @@ function ShippingLabelMaker () {
 	}
 	function createNewShippingLabel () {
 		setNewLabel( true );
+	}
+	function getShippingCost () {
+		const {
+			weight,
+			shippingOption
+		} = ShippingInfo;
+		return weight * shippingRate *
+			( shippingOption === ShippingOption.ground ? 1 : 1.5 );
 	}
 
 	const [ labelDone, setLabelDone ] = useState( false );
