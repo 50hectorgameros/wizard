@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography'
 
 function Header ( props ) {
 	const { title, step } = props;
 	return (
 		<>
-			<h1>{ title }</h1>
+			<Typography variant='h5' component='h2'>
+				{ title }
+			</Typography>
 			<LinearProgress
 				variant='determinate'
 				value={ step * 20 }

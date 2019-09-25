@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+const WizardAction = {
+	prev: 1,
+	next: 2,
+	end: 3
+};
+
 function Wizard ( props ) {
 	const {
 		steps,
@@ -10,26 +16,25 @@ function Wizard ( props ) {
 	} = props;
 	const lastStep = steps.length - 1;
 	const [ step, setStep ] = useState( 0 );
-
 	const onAction = action => {
 		let newStep;
 
 		switch ( action ) {
-			case 1:
+			case WizardAction.prev:
 				if ( step === 0 ) {
 					return;
 				} else {
 					newStep = step - 1;
 				}
 				break;
-			case 2:
+			case WizardAction.next:
 				if ( step === lastStep ) {
 					return;
 				} else {
 					newStep = step + 1;
 				}
 				break;
-			case 3:
+			case WizardAction.end:
 				return onComplete();
 			default:
 			 throw new Error( `Invalid option: ${ action }` );

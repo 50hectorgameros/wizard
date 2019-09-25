@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Wizard from '../../core/components/wizard'
+import Wizard from '../../core/components/wizard/wizard'
 import GetSenderAddress from './steps/getSenderAddress';
 import GetReceiverAddress from './steps/getReceiverAddress';
 import GetWeight from './steps/getWeight';
@@ -30,6 +30,7 @@ const ShippingOption = {
 	ground: 1,
 	priority: 2
 };
+// ShippingInfo structure
 let ShippingInfo = {
 	from: {
 		name: '',
@@ -48,7 +49,7 @@ let ShippingInfo = {
 	weight: 0,
 	shippingOption: ''
 };
-const drawerWidth = 200;
+const drawerWidth = 180;
 const useStyles = makeStyles( theme => ( {
 	root: {
 		display: 'flex'
@@ -92,7 +93,7 @@ const useStyles = makeStyles( theme => ( {
 	},
 	content: {
 		flexGrow: 1,
-		padding: theme.spacing( 6, 3, 3 ),
+		padding: theme.spacing( 9, 3, 3 ),
 		transition: theme.transitions.create( 'margin', {
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen
@@ -109,10 +110,30 @@ const useStyles = makeStyles( theme => ( {
 } ) );
 
 function ShippingLabelMaker () {
-	function onComplete () {
+	// style hooks
+	const classes = useStyles();
+	const theme = useTheme();
+	// different handler definitions
+	const onComplete = () => {
 		setLabelDone( true );
-	}
-	function shippingLabelOnComplete () {
+	};
+	const createNewShippingLabel = () => {
+		setNewLabel( true );
+	};
+	const getShippingCost = () => {
+		// destructure the required values in order to compute the correct 
+		// shipping cost
+		const {
+			weight,
+			shippingOption
+		} = ShippingInfo;
+		// return the calculated cost
+		return +(
+			weight * shippingRate *
+			( shippingOption === ShippingOption.ground ? 1 : 1.5 )
+		).toFixed( 2 ); // fixed response to two decimals
+	};
+	const shippingLabelOnComplete = () => {
 		ShippingInfo = {
 			from: {
 				name: '',
@@ -134,29 +155,16 @@ function ShippingLabelMaker () {
 
 		setLabelDone( false );
 		setNewLabel( false );
-	}
-	function createNewShippingLabel () {
-		setNewLabel( true );
-	}
-	function getShippingCost () {
-		const {
-			weight,
-			shippingOption
-		} = ShippingInfo;
-		return +(
-			weight * shippingRate *
-			( shippingOption === ShippingOption.ground ? 1 : 1.5 )
-		).toFixed( 2 );
-	}
-
+	};
 	const handleDrawerOpen = () => setOpen( true );
 	const handleDrawerClose = () => setOpen( false );
+	// state definitions
 	const [ labelDone, setLabelDone ] = useState( false );
 	const [ newLabel, setNewLabel ] = useState( false );
 	const [ open, setOpen ] = useState( false );
-	const classes = useStyles();
-	const theme = useTheme();
 
+	// if a label was just created (according to "labelDone" variable)
+	// show such shipping label.
 	if ( labelDone ) {
 		return (
 			<ShippingLabel
@@ -178,7 +186,6 @@ function ShippingLabelMaker () {
 				<Toolbar>
 					<IconButton
 						edge='start'
-						className={ classes.menuButton }
 						color='inherit'
 						aria-label='open drawer'
 						onClick={ handleDrawerOpen }
