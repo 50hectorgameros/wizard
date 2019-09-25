@@ -47,6 +47,9 @@ function GetSenderAddress ( props ) {
 					margin='normal'
 					className={ classes.textField }
 					name='weight'
+					inputProps={ {
+						min: 0
+					} }
 				/>
 			</form>
 			<div className={ classes.buttonGroup }>
