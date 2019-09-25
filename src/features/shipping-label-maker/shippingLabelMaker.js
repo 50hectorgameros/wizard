@@ -67,8 +67,10 @@ function ShippingLabelMaker () {
 			weight,
 			shippingOption
 		} = ShippingInfo;
-		return weight * shippingRate *
-			( shippingOption === ShippingOption.ground ? 1 : 1.5 );
+		return +(
+			weight * shippingRate *
+			( shippingOption === ShippingOption.ground ? 1 : 1.5 )
+		).toFixed( 2 );
 	}
 
 	const [ labelDone, setLabelDone ] = useState( false );
@@ -79,6 +81,7 @@ function ShippingLabelMaker () {
 			<ShippingLabel
 				wizardContext={ ShippingInfo }
 				onComplete={ shippingLabelOnComplete }
+				shippingCost= { getShippingCost() }
 			/>
 		);
 	}

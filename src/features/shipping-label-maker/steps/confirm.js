@@ -81,7 +81,7 @@ function Confirm ( props ) {
 						Weight
 					</Typography>
 					<Typography component='p'>
-						{ weight }
+						{ weight } kg
 					</Typography>
 				</Paper>
 				<Paper className={ confirmClasses.paperContainer }>

@@ -40,7 +40,7 @@ function GetSenderAddress ( props ) {
 				<TextField
 					type='number'
 					id='weight'
-					label='Weight'
+					label='Weight (in Kilograms)'
 					value={ localWeight }
 					onChange={ onChange }
 					variant='outlined'
