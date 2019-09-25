@@ -1,7 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles( theme => ( {
+	container: {
+		display: 'flex',
+		flexWrap: 'wrap'
+	},
+	textField: {
+		marginLeft: theme.spacing( 1 ),
+		marginRight: theme.spacing( 1 )
+	},
+	button: {
+		margin: theme.spacing( 1 )
+	}
+} ) );
 
 function GetSenderAddress ( props ) {
+	const classes = useStyles();
 	const {
 		onAction,
 		wizardContext: { from }
@@ -17,51 +35,70 @@ function GetSenderAddress ( props ) {
 		setLocalFrom( { ...from } );
 	};
 	return (
-		<form>
-			<label>Name:&nbsp;</label>
-			<input
-				type='text'
-				name='name'
-				value={ localFrom.name }
-				onChange={ onChange }
-			/>
-			<br />
-			<label>Street:&nbsp;</label>
-			<input
-				type='text'
-				name='street'
-				value={ localFrom.street }
-				onChange={ onChange }
-			/>
-			<br />
-			<label>City:&nbsp;</label>
-			<input
-				type='text'
-				name='city'
-				value={ localFrom.city }
-				onChange={ onChange }
-			/>
-			<label>State:&nbsp;</label>
-			<input
-				type='text'
-				name='state'
-				value={ localFrom.state }
-				onChange={ onChange }
-			/>
-			<label>Zip:&nbsp;</label>
-			<input
-				type='text'
-				name='zip'
-				value={ localFrom.zip }
-				onChange={ onChange }
-			/>
-			<br />
-			<input
-				type='button'
-				value='Next'
+		<>
+			<form className={ classes.container }>
+				<TextField
+					id='sender-name'
+					label='Name'
+					value={ localFrom.name }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					fullWidth
+					name='name'
+				/>
+				<TextField
+					id='sender-street'
+					label='Street'
+					value={ localFrom.street }
+					onChange={ onChange }
+					variant='outlined'
+					margin='normal'
+					className={ classes.textField }
+					fullWidth
+					name='street'
+				/>
+				<TextField
+					id='sender-city'
+					label='City'
+					value={ localFrom.city }
+					onChange={ onChange }
+					variant='outlined'
+					className={ classes.textField }
+					margin='normal'
+					name='city'
+				/>
+				<TextField
+					id='sender-state'
+					label='State'
+					value={ localFrom.state }
+					onChange={ onChange }
+					variant='outlined'
+					className={ classes.textField }
+					margin='normal'
+					name='state'
+				/>
+				<TextField
+					id='sender-zip'
+					label='Zip'
+					value={ localFrom.zip }
+					onChange={ onChange }
+					variant='outlined'
+					className={ classes.textField }
+					margin='normal'
+					name='zip'
+				/>
+			</form>
+			<Button
+				variant='outlined'
+				color='secondary'
+				className={ classes.button }
 				onClick={ onClick }
-			/>
-		</form>
+			>
+				Next
+			</Button>
+		</>
 	);
 }
 
