@@ -40,7 +40,10 @@ function Wizard ( props ) {
 	const Step = steps[ step ];
 	return (
 		<>
-			<Header title="Shipping Label Maker" />
+			<Header
+				title="Shipping Label Maker"
+				step={ step + 1 }
+			/>
 			<Step
 				onAction={ onAction }
 				wizardContext={ wizardContext }
