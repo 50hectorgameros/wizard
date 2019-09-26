@@ -216,14 +216,14 @@ function ShippingLabelMaker () {
 				</div>
 				<Divider />
 				<List>
-					<ListItem button>
+					<ListItem
+						button
+						onClick={ createNewShippingLabel }
+					>
 						<ListItemIcon>
 							<NoteAddIcon />
 						</ListItemIcon>
-						<ListItemText
-							primary='Create Label'
-							onClick={ createNewShippingLabel }
-						/>
+						<ListItemText primary='Create Label' />
 					</ListItem>
 				</List>
 			</Drawer>

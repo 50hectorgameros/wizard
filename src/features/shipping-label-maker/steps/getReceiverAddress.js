@@ -69,6 +69,7 @@ function GetReceiverAddress ( props ) {
 					name='state'
 				/>
 				<TextField
+					type='number'
 					id='receiver-zip'
 					label='Zip'
 					value={ localTo.zip }
@@ -77,6 +78,9 @@ function GetReceiverAddress ( props ) {
 					margin='normal'
 					className={ classes.textField }
 					name='zip'
+					inputProps={ {
+						min: 0
+					} }
 				/>
 			</form>
 			<div className={ classes.buttonGroup }>
