@@ -5,9 +5,9 @@ For this exercise a used React's Hooks with React version 16.9.
 The overall style of the application was provided with Material-UI version 4.4.3
 using different components like AppBar or TextField, and different hooks like makeStyles.
 No Redux was implemented and all application uses component states with useState hook.
-Different tests were provided along with the source file being testes, for instance, if
+Different tests were provided along with the source file being tested, for instance, if
 a test for "Counter" component is created, it will sit on the same folder of the component
-with the .test.js suffix: component.test.js.
+with the .test.js suffix: counter.test.js.
 
 
 ## Available Scripts
