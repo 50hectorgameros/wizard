@@ -4,6 +4,7 @@ import { useStyles } from './step-style';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const weightUseStyles = makeStyles( theme => ( {
 	container: {
@@ -40,7 +41,7 @@ function GetSenderAddress ( props ) {
 				<TextField
 					type='number'
 					id='weight'
-					label='Weight (in Kilograms)'
+					label='Weight'
 					value={ localWeight }
 					onChange={ onChange }
 					variant='outlined'
@@ -49,6 +50,10 @@ function GetSenderAddress ( props ) {
 					name='weight'
 					inputProps={ {
 						min: 0
+					} }
+					InputProps={ {
+						endAdornment:
+							<InputAdornment position='end'>Kg</InputAdornment>
 					} }
 				/>
 			</form>

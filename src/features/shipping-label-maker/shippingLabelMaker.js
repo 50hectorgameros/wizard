@@ -46,7 +46,7 @@ let ShippingInfo = {
 		state: '',
 		zip: ''
 	},
-	weight: 0,
+	weight: '',
 	shippingOption: ''
 };
 const drawerWidth = 180;
@@ -108,6 +108,26 @@ const useStyles = makeStyles( theme => ( {
 		marginLeft: 0
 	}
 } ) );
+const initializeShippingInfoObject = () => {
+	ShippingInfo = {
+		from: {
+			name: '',
+			street: '',
+			city: '',
+			state: '',
+			zip: ''
+		},
+		to: {
+			name: '',
+			street: '',
+			city: '',
+			state: '',
+			zip: ''
+		},
+		weight: '',
+		shippingOption: ''
+	};
+};
 
 function ShippingLabelMaker () {
 	// style hooks
@@ -115,10 +135,13 @@ function ShippingLabelMaker () {
 	const theme = useTheme();
 	// different handler definitions
 	const onComplete = () => {
+		// close the wizard
+		setOpenWizard( false );
+		// mark that a new label was created in order to handle it appropriately
 		setLabelDone( true );
 	};
 	const createNewShippingLabel = () => {
-		setNewLabel( true );
+		setOpenWizard( true );
 	};
 	const getShippingCost = () => {
 		// destructure the required values in order to compute the correct 
@@ -134,33 +157,17 @@ function ShippingLabelMaker () {
 		).toFixed( 2 ); // fixed response to two decimals
 	};
 	const shippingLabelOnComplete = () => {
-		ShippingInfo = {
-			from: {
-				name: '',
-				street: '',
-				city: '',
-				state: '',
-				zip: ''
-			},
-			to: {
-				name: '',
-				street: '',
-				city: '',
-				state: '',
-				zip: ''
-			},
-			weight: 0,
-			shippingOption: ''
-		};
-
+		// Mark that the brand-new label was handled correctly (in this example, just
+		// showing it to the user), that way allowing for a new label to be created.
 		setLabelDone( false );
-		setNewLabel( false );
+		// re-stablish ShippingInfo object
+		initializeShippingInfoObject();
 	};
 	const handleDrawerOpen = () => setOpen( true );
 	const handleDrawerClose = () => setOpen( false );
 	// state definitions
 	const [ labelDone, setLabelDone ] = useState( false );
-	const [ newLabel, setNewLabel ] = useState( false );
+	const [ openWizard, setOpenWizard ] = useState( false );
 	const [ open, setOpen ] = useState( false );
 
 	// if a label was just created (according to "labelDone" variable)
@@ -232,7 +239,7 @@ function ShippingLabelMaker () {
 					[ classes.contentShift ]: open
 				} ) }
 			>
-				{ newLabel &&
+				{ openWizard &&
 					<Wizard
 						steps={ [
 							GetSenderAddress,
