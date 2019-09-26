@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## About the exercise
+For this exercise a used React's Hooks with React version 16.9.
+The overall style of the application was provided with Material-UI version 4.4.3
+using different components like AppBar or TextField, and different hooks like makeStyles.
+No Redux was implemented and all application uses component states with useState hook.
+Different tests were provided along with the source file being testes, for instance, if
+a test for "Counter" component is created, it will sit on the same folder of the component
+with the .test.js suffix: component.test.js.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
